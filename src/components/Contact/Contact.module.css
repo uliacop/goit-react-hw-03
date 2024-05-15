@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 350px;
+  gap: 15px;
+}
+
+.user,
+.phone {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #dd94c1;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px;
+  width: 130px;
+  height: 50px;
+}
+
+.button:hover {
+  background-color: #ca89b7;
+}
+
+.button:focus {
+  background-color: #702d70;
+}

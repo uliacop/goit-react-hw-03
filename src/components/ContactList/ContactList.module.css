@@ -1,0 +1,14 @@
+.list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  max-width: 600px;
+  list-style: none;
+  /*  flex-basis: calc((100% - 30px) / 4); */
+}
