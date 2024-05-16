@@ -1,34 +1,35 @@
 import ContactForm from "./components/ContactForm/ContactForm";
-import initialTasks from "./tasks.json";
+import initialContacts from "./contact.json";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactList from "./components/ContactList/ContactList";
 import { useState, useEffect } from "react";
 
 function App() {
-  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || initialTasks;
-  const [tasks, setTasks] = useState(savedTasks);
+  const savedContacts =
+    JSON.parse(localStorage.getItem("contacts")) || initialContacts;
+  const [contacts, setContacts] = useState(savedContacts);
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
-  const addTask = (newTask) => {
-    setTasks((prevTasks) => {
-      return [...prevTasks, newTask];
+  const addContact = (newContact) => {
+    setContacts((prevContacts) => {
+      return [...prevContacts, newContact];
     });
   };
 
-  const deleteTask = (taskId) => {
-    setTasks((prevTasks) => {
-      return prevTasks.filter((task) => task.id !== taskId);
+  const deleteContact = (contactId) => {
+    setContacts((prevContacts) => {
+      return prevContacts.filter((contact) => contact.id !== contactId);
     });
   };
 
-  const visibleTasks = tasks.filter((task) => {
+  const visibleContacts = contacts.filter((contact) => {
     const nameMatch =
-      task.name && task.name.toLowerCase().includes(filter.toLowerCase());
-    const numberMatch = task.number && task.number.includes(filter);
+      contact.name && contact.name.toLowerCase().includes(filter.toLowerCase());
+    const numberMatch = contact.number && contact.number.includes(filter);
 
     return nameMatch || numberMatch;
   });
@@ -37,9 +38,9 @@ function App() {
     <>
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onAdd={addTask} />
+        <ContactForm onAdd={addContact} />
         <SearchBox value={filter} onFilter={setFilter} />
-        <ContactList tasks={visibleTasks} onDelete={deleteTask} />
+        <ContactList contacts={visibleContacts} onDelete={deleteContact} />
       </div>
     </>
   );
